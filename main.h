@@ -17,6 +17,9 @@ int get_specifier(char, va_list);
 int print_char(va_list);
 int print_string(va_list);
 int print_percent(va_list);
+int print_d(va_list);
+int print_i(va_list);
+void print_numbers(int num, int *counter);
 
 #endif /* MAIN_H */
 
