@@ -7,6 +7,6 @@
  */
 int main(void)
 {
-	_printf("Charles %c %c Maina\n", 'a', 'b');
+	_printf("Charles %c%s\n", 'M',"Maina");
 	return (0);
 }
