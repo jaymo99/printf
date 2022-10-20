@@ -7,7 +7,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, printed_char = 0;
+	int i = 0, j = 0, printed_char = 0;
 	va_list list;
 
 	va_start(list, format);
@@ -16,10 +16,14 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			get_specifier(format[i], list);
+			j = get_specifier(format[i], list);
+			printed_char += j;
 		}
 		else
+		{
 			_putchar(format[i]);
+			printed_char++;
+		}
 		i++;
 	}
 
