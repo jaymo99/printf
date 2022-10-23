@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * print_char - print char
@@ -27,6 +28,11 @@ int print_string(va_list list)
 	char *str;
 
 	str = va_arg(list, char*);
+
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -80,11 +86,17 @@ int print_d(va_list list)
 
 void print_numbers(int num, int *counter)
 {
+	/* negative numbers */
+	if (num < 0)
+	{
+		_putchar('-');
+		num *= -1;
+	}
 
-		if (num / 10)
-		{
-			print_numbers(num / 10, counter);
-		}
-		_putchar((num % 10) + '0');
-		*counter += 1;
+	if (num / 10)
+	{
+		print_numbers(num / 10, counter);
+	}
+	_putchar((num % 10) + '0');
+	*counter += 1;
 }

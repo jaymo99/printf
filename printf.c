@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * _printf - resembles the printf function in C
@@ -9,6 +10,11 @@ int _printf(const char *format, ...)
 {
 	int i = 0, j = 0, printed_char = 0;
 	va_list list;
+
+	if (format == NULL)
+	{
+		exit(0);
+	}
 
 	va_start(list, format);
 	while (format[i] != '\0')

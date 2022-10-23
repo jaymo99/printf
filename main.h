@@ -3,11 +3,18 @@
 
 #include <stdarg.h>
 
+/**
+ * struct Specifier - indicates format specifier symbols and functions
+ * functions.
+ *
+ * @symbol: character specifying a format
+ * @f: function to print data in the specified format.
+ */
 typedef struct Specifier
 {
 	char symbol;
 	int (*f)(va_list);
-	
+
 } Specifier;
 
 /* main functions */
