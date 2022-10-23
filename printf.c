@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * _printf - resembles the printf function in C
@@ -9,6 +10,12 @@ int _printf(const char *format, ...)
 {
 	int i = 0, j = 0, printed_char = 0;
 	va_list list;
+	Specifier s;
+
+	if (format == NULL)
+	{
+		return (-1);
+	}
 
 	va_start(list, format);
 	while (format[i] != '\0')
@@ -16,7 +23,25 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			j = get_specifier(format[i], list);
+
+			if (empty_specifier(format[i]))
+				continue;
+			
+			s = get_specifier(format[i]);
+
+			/* True when symbol after '%' is not valid */
+			if (s.f == NULL)
+			{
+				i--;
+				_putchar(format[i]);
+				printed_char++;
+				j = 0;
+			}
+			else
+			{
+				j = s.f(list);
+			}
+
 			printed_char += j;
 		}
 		else
@@ -24,6 +49,7 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			printed_char++;
 		}
+
 		i++;
 	}
 
