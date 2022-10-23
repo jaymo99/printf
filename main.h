@@ -12,7 +12,7 @@
  */
 typedef struct Specifier
 {
-	char symbol;
+	char *symbol;
 	int (*f)(va_list);
 
 } Specifier;
@@ -20,7 +20,8 @@ typedef struct Specifier
 /* main functions */
 int _putchar(char c);
 int _printf(const char *format, ...);
-int get_specifier(char, va_list);
+Specifier get_specifier(char);
+int empty_specifier(char c);
 int print_char(va_list);
 int print_string(va_list);
 int print_percent(va_list);

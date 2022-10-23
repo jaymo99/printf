@@ -1,10 +1,8 @@
-#include <stdio.h>
 #include "../main.h"
+#include <stdio.h>
 
 int main(void)
 {
-	printf("I am %s\n", "James");
-	_printf("I am %s\n", "James");
-	
+	_printf("Yes it is % and not everything\n");
 	return (0);
 }
